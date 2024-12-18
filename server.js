@@ -58,7 +58,7 @@ function updateXMLWithClientId(xmlFilePath, xmlFilePathW, logFilePath, rootNode)
       const updatedItems = [];
       const logItems = [];
 
-      const existingClientIds = new Set(xmlItems.map((item) => parseInt(item.$.id || item.$.fromid)));
+      const existingClientIds = new Set();
 
 	  const attributesToCheck = [
         'decayTo',
@@ -69,8 +69,9 @@ function updateXMLWithClientId(xmlFilePath, xmlFilePathW, logFilePath, rootNode)
         'transformEquipTo'
       ];
 	  
-      xmlItems.forEach((xmlItem) => {
+      xmlItems.forEach((xmlItem1) => {
 		  
+		let xmlItem = xmlItem1;
 		// Atualizar atributos adicionais no formato "<attribute key=... value=... />"
         if (xmlItem.attribute) {
 			xmlItem.attribute.forEach((attr) => {
